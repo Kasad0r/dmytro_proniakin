@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-translate="pageTitle">Dmytro Proniakin - Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+      :root {
+          /* Light Theme Variables (Default) */
+          --primary-bg: #f8f9fa;
+          --card-bg: #ffffff;
+          --text-color: #343a40;
+          --heading-color: #212529;
+          --accent1: #8fbc8f; /* Sage Green */
+          --accent2: #e07a5f; /* Terracotta/Coral */
+          --border-color: #dee2e6;
+          --shadow-color: rgba(0, 0, 0, 0.08);
+          --link-color: var(--accent1);
+          --link-hover-color: var(--accent2);
+          --button-bg: var(--accent1);
+          --button-text: #ffffff;
+          --button-hover-bg: var(--accent2);
+          --font-heading: 'Montserrat', sans-serif;
+          --font-body: 'Roboto', sans-serif;
+          --transition-speed: 0.3s;
+      }
+
+      html.dark-mode {
+          /* Dark Theme Variables */
+          --primary-bg: #1a1d24; /* Dark background */
+          --card-bg: #252a34; /* Slightly lighter card */
+          --text-color: #adb5bd; /* Lighter text */
+          --heading-color: #e9ecef; /* Light headings */
+          --accent1: #a8d8a8; /* Lighter Sage for dark */
+          --accent2: #f08a6f; /* Lighter Terracotta for dark */
+          --border-color: #495057; /* Darker border */
+          --shadow-color: rgba(0, 0, 0, 0.2);
+          --link-color: var(--accent1);
+          --link-hover-color: var(--accent2);
+          --button-bg: var(--accent1);
+          --button-text: #1a1d24; /* Dark text on light button */
+          --button-hover-bg: var(--accent2);
+      }
+
+      *, *::before, *::after {
+          box-sizing: border-box;
+      }
+
+      html {
+          scroll-behavior: smooth;
+      }
+
+      body {
+          font-family: var(--font-body);
+          line-height: 1.7;
+          color: var(--text-color);
+          background-color: var(--primary-bg);
+          margin: 0;
+          padding: 0;
+          overflow-x: hidden;
+          transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+      }
+
+      .container {
+          max-width: 1000px;
+          margin: 40px auto;
+          padding: 0 20px;
+      }
+
+      /* --- Utility Buttons --- */
+      .utility-buttons {
+          position: fixed;
+          top: 15px;
+          right: 15px;
+          z-index: 100;
+          display: flex;
+          gap: 10px;
+      }
+
+      .lang-switcher, .theme-switcher {
+          background: var(--card-bg);
+          padding: 5px;
+          border-radius: 20px;
+          box-shadow: 0 2px 8px var(--shadow-color);
+          display: flex;
+          align-items: center;
+      }
+
+      .utility-buttons button {
+          background: none;
+          border: none;
+          padding: 5px 8px;
+          cursor: pointer;
+          font-family: var(--font-heading);
+          font-weight: 600;
+          font-size: 0.85em;
+          color: var(--text-color);
+          opacity: 0.7;
+          transition: opacity var(--transition-speed) ease, color var(--transition-speed) ease, transform 0.2s ease;
+      }
+
+      .utility-buttons button:hover {
+          opacity: 1;
+          color: var(--link-hover-color);
+          transform: scale(1.1);
+      }
+
+      .lang-switcher button.active {
+          opacity: 1;
+          color: var(--accent1);
+          font-weight: 700;
+      }
+
+      .theme-switcher button {
+          font-size: 1.1em; /* Make icons slightly larger */
+          padding: 3px 6px;
+      }
+
+      /* Hide one theme icon based on mode */
+      .theme-switcher .fa-sun {
+          display: none;
+      }
+
+      html.dark-mode .theme-switcher .fa-sun {
+          display: inline-block;
+      }
+
+      html.dark-mode .theme-switcher .fa-moon {
+          display: none;
+      }
+
+
+      /* --- Header --- */
+      header {
+          text-align: center;
+          padding: 60px 30px 40px 30px;
+          background: var(--card-bg);
+          border-radius: 12px;
+          margin-bottom: 40px;
+          box-shadow: 0 8px 25px var(--shadow-color);
+          position: relative;
+          overflow: hidden;
+          transition: background-color var(--transition-speed) ease;
+      }
+
+      /* Add subtle animation to pseudo-elements? */
+
+      header h1 {
+          margin: 0 0 5px 0;
+          font-family: var(--font-heading);
+          font-size: 2.8em;
+          font-weight: 700;
+          color: var(--heading-color);
+          transition: color var(--transition-speed) ease;
+      }
+
+      header h2 {
+          margin: 0 0 25px 0;
+          font-family: var(--font-heading);
+          font-size: 1.3em;
+          font-weight: 400;
+          color: var(--text-color);
+          opacity: 0.8;
+          transition: color var(--transition-speed) ease;
+      }
+
+      .contact-info a {
+          color: var(--link-color);
+          text-decoration: none;
+          margin: 0 10px;
+          font-size: 0.95em;
+          transition: color var(--transition-speed) ease;
+      }
+
+      .contact-info i {
+          margin-right: 6px;
+          color: var(--link-color);
+          font-size: 1.1em;
+          transition: color var(--transition-speed) ease;
+      }
+
+      .contact-info a:hover {
+          color: var(--link-hover-color);
+      }
+
+      .contact-info a:hover i {
+          color: var(--link-hover-color);
+      }
+
+      /* --- Main Content Sections --- */
+      main section {
+          margin-bottom: 40px;
+          padding: 30px;
+          background: var(--card-bg);
+          border-radius: 10px;
+          box-shadow: 0 6px 20px var(--shadow-color);
+          opacity: 0;
+          transform: translateY(20px);
+          transition: opacity 0.6s ease-out, transform 0.6s ease-out, background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+      }
+
+      main section.visible {
+          opacity: 1;
+          transform: translateY(0);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+          main section {
+              opacity: 1;
+              transform: none;
+              transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease; /* Keep theme transitions */
+          }
+
+          *, *::before, *::after { /* Disable most animations */
+              animation-duration: 0.01ms !important;
+              animation-iteration-count: 1 !important;
+              transition-duration: 0.01ms !important;
+              scroll-behavior: auto !important;
+          }
+      }
+
+      h3 { /* Section Title */
+          font-family: var(--font-heading);
+          font-size: 1.6em;
+          font-weight: 600;
+          color: var(--heading-color);
+          margin-bottom: 30px; /* Increased spacing */
+          position: relative;
+          padding-bottom: 10px;
+          display: inline-block;
+          transition: color var(--transition-speed) ease;
+      }
+
+      h3::after { /* Underline effect */
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0; /* Animate width */
+          height: 4px;
+          background: linear-gradient(90deg, var(--accent1), var(--accent2));
+          border-radius: 2px;
+          transition: width 0.5s ease-out;
+      }
+
+      main section.visible h3::after { /* Animate underline on scroll */
+          width: 70%;
+      }
+
+      h3 i {
+          margin-right: 12px; /* Increased icon spacing */
+          color: var(--accent1);
+          transition: color var(--transition-speed) ease;
+      }
+
+
+      /* --- Skills Section --- */
+      #skills .skills-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+          gap: 25px;
+      }
+
+      #skills .skill-category h4 {
+          font-family: var(--font-heading);
+          font-size: 1.1em;
+          font-weight: 600;
+          color: var(--accent1);
+          margin-bottom: 15px;
+          padding-bottom: 5px;
+          border-bottom: 2px solid var(--border-color);
+          transition: color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+      }
+
+      #skills ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+      }
+
+      #skills li {
+          display: flex; /* Align icon and text */
+          align-items: center;
+          background-color: var(--primary-bg); /* Use main bg */
+          color: var(--text-color);
+          padding: 8px 12px;
+          margin-bottom: 8px;
+          border-radius: 6px;
+          font-size: 0.95em;
+          border: 1px solid var(--border-color);
+          transition: all var(--transition-speed) ease;
+      }
+
+      #skills li i { /* Skill icons */
+          margin-right: 10px;
+          color: var(--accent1);
+          font-size: 1.1em;
+          width: 20px; /* Fixed width for alignment */
+          text-align: center;
+          transition: color var(--transition-speed) ease;
+      }
+
+      #skills li .fab { /* Brand icons might need specific styling */
+          font-size: 1.2em;
+      }
+
+      #skills li:hover {
+          background-color: var(--accent1);
+          color: var(--button-text); /* Adapts to theme */
+          border-color: var(--accent1);
+          transform: translateY(-2px) scale(1.02);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      #skills li:hover i {
+          color: var(--button-text);
+      }
+
+
+      /* --- Experience Section --- */
+      #experience .job {
+          margin-bottom: 30px;
+          padding: 25px;
+          border: 1px solid var(--border-color);
+          border-radius: 8px;
+          transition: box-shadow var(--transition-speed) ease, border-color var(--transition-speed) ease;
+      }
+
+      #experience .job:hover {
+          box-shadow: 0 8px 25px var(--shadow-color);
+          border-color: var(--accent1);
+      }
+
+      /* Removed timeline styling for cleaner card approach */
+
+      #experience h4 { /* Company */
+          font-family: var(--font-heading);
+          font-size: 1.2em;
+          font-weight: 600;
+          color: var(--heading-color);
+          margin-bottom: 2px;
+      }
+
+      #experience > .job > span { /* Company Dates */
+          display: block;
+          font-size: 0.9em;
+          color: #6c757d;
+          margin-bottom: 20px;
+      }
+
+      #experience .role {
+          margin-bottom: 20px;
+      }
+
+      #experience h5 { /* Role */
+          font-family: var(--font-heading);
+          font-size: 1.1em;
+          font-weight: 600;
+          margin-bottom: 0;
+      }
+
+      #experience .role > span { /* Role Dates */
+          display: block;
+          font-size: 0.9em;
+          color: #6c757d;
+          margin-bottom: 15px;
+      }
+
+      #experience .project-focus {
+          margin-top: 15px;
+          padding: 15px;
+          background: var(--primary-bg); /* Contrast with card bg */
+          border-radius: 6px;
+          border: 1px solid var(--border-color);
+          transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+      }
+
+      #experience h6 { /* Project */
+          font-family: var(--font-heading);
+          font-size: 1em;
+          font-weight: 600;
+          color: var(--accent1);
+          margin-bottom: 2px;
+      }
+
+      #experience .project-focus > span { /* Project Dates */
+          display: block;
+          font-size: 0.85em;
+          color: #6c757d;
+          margin-bottom: 10px;
+      }
+
+      #experience ul {
+          list-style: none;
+          padding-left: 5px;
+          margin-top: 8px;
+      }
+
+      #experience li {
+          margin-bottom: 10px;
+          font-size: 0.95em;
+          position: relative;
+          padding-left: 20px;
+      }
+
+      #experience li::before {
+          content: '\f0da'; /* Font Awesome chevron-right */
+          font-family: 'Font Awesome 6 Free';
+          font-weight: 900;
+          position: absolute;
+          left: 0;
+          top: 4px;
+          color: var(--accent2);
+          font-size: 0.9em;
+          transition: color var(--transition-speed) ease;
+      }
+
+      /* --- Education Section --- */
+      #education .education-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 20px;
+      }
+
+      #education .institution {
+          padding: 20px;
+          border: 1px solid var(--border-color);
+          border-radius: 8px;
+          transition: box-shadow var(--transition-speed) ease, border-color var(--transition-speed) ease;
+      }
+
+      #education .institution:hover {
+          box-shadow: 0 5px 15px var(--shadow-color);
+          border-color: var(--accent1);
+      }
+
+      #education h4 {
+          font-family: var(--font-heading);
+          font-size: 1.1em;
+          font-weight: 600;
+          margin: 0 0 5px 0;
+          color: var(--heading-color);
+      }
+
+      #education p {
+          margin: 0 0 5px 0;
+          font-size: 0.95em;
+          color: var(--text-color);
+      }
+
+      #education span {
+          display: block;
+          font-size: 0.9em;
+          color: #6c757d;
+      }
+
+      /* --- Languages Section --- */
+      #languages .lang-item {
+          display: inline-flex;
+          align-items: center;
+          margin: 0 15px 10px 0;
+          font-size: 1em;
+          background: var(--primary-bg);
+          padding: 8px 15px;
+          border-radius: 20px;
+          border: 1px solid var(--border-color);
+          transition: all var(--transition-speed) ease;
+      }
+
+      #languages .lang-item:hover {
+          background-color: var(--accent1);
+          color: var(--button-text);
+          border-color: var(--accent1);
+      }
+
+      #languages .lang-item:hover span {
+          color: var(--button-text);
+      }
+
+      #languages .lang-item:hover i {
+          color: var(--button-text);
+      }
+
+      #languages .lang-item i {
+          margin-right: 8px;
+          color: var(--accent1);
+          font-size: 1.2em;
+          transition: color var(--transition-speed) ease;
+      }
+
+      #languages span {
+          font-weight: 600;
+          color: var(--heading-color);
+          margin-right: 5px;
+          transition: color var(--transition-speed) ease;
+      }
+
+      #languages strong {
+          font-weight: 400;
+      }
+
+      /* Language level normal weight */
+
+      /* --- Contact Form Section --- */
+      #contact-form {
+          margin-top: 20px;
+      }
+
+      #contact-form .form-group {
+          margin-bottom: 20px;
+      }
+
+      #contact-form label {
+          display: block;
+          margin-bottom: 8px;
+          font-weight: 600;
+          font-family: var(--font-heading);
+          font-size: 0.95em;
+      }
+
+      #contact-form input[type="text"],
+      #contact-form input[type="email"],
+      #contact-form textarea {
+          width: 100%;
+          padding: 12px;
+          border: 1px solid var(--border-color);
+          border-radius: 6px;
+          font-family: var(--font-body);
+          font-size: 1em;
+          background-color: var(--primary-bg); /* Match bg */
+          color: var(--text-color);
+          transition: border-color var(--transition-speed) ease, background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+      }
+
+      #contact-form input:focus,
+      #contact-form textarea:focus {
+          outline: none;
+          border-color: var(--accent1);
+          box-shadow: 0 0 0 3px rgba(143, 188, 143, 0.25); /* Focus ring */
+      }
+
+      #contact-form textarea {
+          min-height: 120px;
+          resize: vertical;
+      }
+
+      #contact-form button {
+          padding: 12px 25px;
+          background-color: var(--button-bg);
+          color: var(--button-text);
+          border: none;
+          border-radius: 6px;
+          font-family: var(--font-heading);
+          font-size: 1em;
+          font-weight: 600;
+          cursor: pointer;
+          transition: background-color var(--transition-speed) ease, transform 0.2s ease;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+      }
+
+      #contact-form button:hover {
+          background-color: var(--button-hover-bg);
+          transform: translateY(-2px);
+      }
+
+      #contact-form button:active {
+          transform: translateY(0);
+      }
+
+      /* Style for focus state on keyboard navigation */
+      :focus-visible {
+          outline: 3px solid var(--accent2);
+          outline-offset: 2px;
+          border-radius: 4px; /* Optional */
+      }
+
+      /* Remove default outline when focus-visible is supported */
+      *:focus:not(:focus-visible) {
+          outline: none;
+      }
+
+      .utility-buttons button:focus-visible,
+      .contact-info a:focus-visible,
+      #skills li:focus-visible,
+      #languages .lang-item:focus-visible,
+      #contact-form button:focus-visible,
+      #contact-form input:focus-visible,
+      #contact-form textarea:focus-visible {
+          outline-color: var(--accent1); /* Use theme color for focus */
+      }
+
+
+      /* --- Footer --- */
+      footer {
+          text-align: center;
+          margin-top: 50px;
+          padding: 25px 0 10px 0;
+          font-size: 0.9em;
+          color: #6c757d;
+          border-top: 1px solid var(--border-color);
+          transition: border-color var(--transition-speed) ease;
+      }
+
+      /* --- Responsiveness --- */
+      @media (max-width: 768px) {
+          .container {
+              margin: 20px auto;
+              padding: 0 15px;
+          }
+
+          .utility-buttons {
+              top: 10px;
+              right: 10px;
+          }
+
+          header {
+              padding: 40px 15px 30px 15px;
+          }
+
+          header h1 {
+              font-size: 2.2em;
+          }
+
+          header h2 {
+              font-size: 1.1em;
+          }
+
+          h3 {
+              font-size: 1.4em;
+          }
+
+          .contact-info a {
+              display: block;
+              margin: 8px 0;
+          }
+
+          main section {
+              padding: 25px;
+          }
+
+          #skills .skills-grid {
+              grid-template-columns: 1fr 1fr;
+          }
+
+          #education .education-grid {
+              grid-template-columns: 1fr;
+          }
+      }
+
+      @media (max-width: 480px) {
+          header h1 {
+              font-size: 1.9em;
+          }
+
+          header h2 {
+              font-size: 1em;
+          }
+
+          h3 {
+              font-size: 1.3em;
+          }
+
+          #skills .skills-grid {
+              grid-template-columns: 1fr;
+          }
+
+          #languages .lang-item {
+              display: flex;
+              margin-right: 0;
+          }
+
+          #contact-form button {
+              width: 100%;
+              justify-content: center;
+          }
+      }
+
+      /* --- Download CV Button --- */
+      .header-actions {
+          margin-top: 30px; /* Space above button */
+          position: relative;
+          z-index: 1; /* Ensure it's above pseudo-elements */
+      }
+
+      .download-cv-button {
+          display: inline-block;
+          padding: 12px 25px; /* Зробимо кнопку помітнішою */
+          background-color: var(--accent2); /* Використаємо другий акцентний колір */
+          color: white; /* Білий текст на кнопці */
+          border: none;
+          border-radius: 30px; /* Більш округла форма */
+          font-family: var(--font-heading);
+          font-size: 1em;
+          font-weight: 600;
+          text-decoration: none;
+          transition: background-color var(--transition-speed) ease, transform 0.2s ease, box-shadow 0.3s ease;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          cursor: pointer;
+      }
+
+      .download-cv-button i {
+          margin-right: 8px;
+      }
+
+      .download-cv-button:hover {
+          background-color: var(--accent1); /* Зміна акценту при наведенні */
+          color: var(--button-text); /* Колір тексту адаптується */
+          transform: translateY(-3px) scale(1.05); /* Більший ефект підняття */
+          box-shadow: 0 7px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .download-cv-button:active {
+          transform: translateY(0) scale(1);
+      }
+
+      /* Стиль фокусу для кнопки */
+      .download-cv-button:focus-visible {
+          outline: 3px solid var(--accent1);
+          outline-offset: 3px;
+          border-radius: 30px; /* Match button shape */
+      }
+  </style>
+</head>
+<body>
+
+<div class="utility-buttons">
+  <div class="lang-switcher">
+    <button data-lang="en" title="English" aria-label="Switch to English">EN</button>
+    <button data-lang="pl" title="Polski" aria-label="Switch to Polish">PL</button>
+    <button data-lang="uk" title="Українська" aria-label="Switch to Ukrainian">UK</button>
+  </div>
+  <div class="theme-switcher">
+    <button id="theme-toggle" aria-label="Toggle theme">
+      <i class="fas fa-moon" aria-hidden="true"></i> <i class="fas fa-sun" aria-hidden="true"></i></button>
+  </div>
+</div>
+
+<div class="container">
+  <header>
+    <h1 data-translate="name">Dmytro Proniakin</h1>
+    <h2 data-translate="jobTitle">Java/Angular Software Engineer | Warsaw, Poland</h2>
+    <div class="contact-info">
+      <a href="mailto:dmytro.proniakin@gmail.com"><i class="fas fa-envelope"></i> <span data-translate="email">dmytro.proniakin@gmail.com</span></a>
+      <a href="https://linkedin.com/in/dmytro-proniakin" target="_blank" rel="noopener noreferrer"><i
+        class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/kasador" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>
+        GitHub</a>
+      <a><i class="fas fa-phone"></i> +48 579 724 211</a>
+    </div>
+
+    <div class="header-actions">
+      <a href="Dmytro_Proniakin_CV.pdf" download="Dmytro_Proniakin_CV_EN.pdf" class="download-cv-button">
+        <i class="fas fa-download"></i> <span data-translate="downloadCVButton">Download CV (PDF)</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section id="summary" class="animate-on-scroll">
+      <h3 data-translate="summaryTitle"><i class="fas fa-user-circle"></i> Summary</h3>
+      <p data-translate="summaryText">
+        Java/Angular Software Engineer with 3.5 years of experience specializing in building and enhancing web
+        applications using Java, Spring Boot, and Angular (v15+, AngularJS). Proven ability to successfully migrate
+        complex legacy systems to modern technology stacks and deliver high-quality features. Possesses full-stack
+        capabilities, including experience with C# and various JavaScript frameworks (jQuery, Native JS, Bootstrap),
+        demonstrating versatility in meeting diverse project requirements. Passionate about frontend development with
+        Angular and backend development with Java.
+      </p>
+    </section>
+
+    <section id="skills" class="animate-on-scroll">
+      <h3 data-translate="skillsTitle"><i class="fas fa-laptop-code"></i> Skills</h3>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h4 data-translate="skillsBackend">Backend</h4>
+          <ul>
+            <li><i class="fab fa-java"></i> Java (17/11/8)</li>
+            <li><i class="fas fa-leaf"></i> Spring Boot (Web, JPA, Security)</li>
+            <li><i class="fab fa-csharp"></i> C#</li>
+            <li><i class="fas fa-code-branch"></i> REST API Development</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h4 data-translate="skillsFrontend">Frontend</h4>
+          <ul>
+            <li><i class="fab fa-angular"></i> Angular (v15+)</li>
+            <li><i class="fab fa-js-square"></i> TypeScript</li>
+            <li><i class="fas fa-atom"></i> RxJS, NgRx</li>
+            <li><i class="fas fa-palette"></i> Angular Material</li>
+            <li><i class="fab fa-css3-alt"></i> SCSS, <i class="fab fa-html5"></i> HTML5</li>
+            <li><i class="fab fa-js"></i> JavaScript (ES6+), jQuery</li>
+            <li><i class="fab fa-bootstrap"></i> Bootstrap</li>
+            <li><i class="fab fa-angular"></i> AngularJS, AngularJS Material</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h4 data-translate="skillsDatabases">Databases</h4>
+          <ul>
+            <li><i class="fas fa-database"></i> PostgreSQL</li>
+            <li><i class="fas fa-database"></i> OracleDB</li>
+            <li><i class="fas fa-file-code"></i> SQL, T-SQL</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h4 data-translate="skillsDevOps">DevOps & Tools</h4>
+          <ul>
+            <li><i class="fab fa-docker"></i> Docker (Dockerfile, Docker Compose)</li>
+            <li><i class="fab fa-jenkins"></i> Jenkins</li>
+            <li><i class="fab fa-git-alt"></i> Git, <i class="fab fa-gitlab"></i> GitLab</li>
+            <li><i class="fab fa-svn"></i> TortoiseSVN</li>
+            <li><i class="fas fa-cogs"></i> Gradle, Maven</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h4 data-translate="skillsProjectMgmt">Project Management & Collaboration</h4>
+          <ul>
+            <li><i class="fab fa-jira"></i> Jira, ClickUp</li>
+            <li><i class="fas fa-tasks"></i> Redmine, Upsource</li>
+            <li><i class="fab fa-microsoft"></i> MS Teams</li>
+            <li><i class="fas fa-users"></i> Agile/Scrum</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h4 data-translate="skillsAPIs">APIs & Other</h4>
+          <ul>
+            <li><i class="fab fa-google"></i> Google Maps API (Places, ODRD, Search, Routes Preferred)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="animate-on-scroll">
+      <h3 data-translate="experienceTitle"><i class="fas fa-briefcase"></i> Experience</h3>
+      <div class="job">
+        <h4 data-translate="companyName">Globema sp. z o.o. | Warsaw, Poland</h4>
+        <span data-translate="companyDates">December 2021 – Present</span>
+
+        <div class="role">
+          <h5 data-translate="middleDevTitle">Middle Software Engineer</h5>
+          <span data-translate="middleDevDates">(September 2023 – Present)</span>
+
+          <div class="project-focus">
+            <h6><i class="fas fa-cogs"></i> <span data-translate="projectFocus1Title">Project Focus: GeoTask & System Migration</span>
+            </h6>
+            <span data-translate="projectFocus1Dates">(September 2023 – February 2025)</span>
+            <ul>
+              <li data-translate="expMid1Bullet1">Continued development and maintenance on the GeoTask project as a
+                Middle Engineer, delivering features and bug fixes using Java/Spring and Angular (v15+).
+              </li>
+              <li data-translate="expMid1Bullet2">Successfully led (or played a key role in) the migration of core
+                components for client systems from legacy AngularJS and Java 8 to modern Angular 15 and Java 17,
+                enhancing performance (incl. lazy loading) and component rendering consistency.
+              </li>
+            </ul>
+          </div>
+          <div class="project-focus">
+            <h6><i class="fas fa-palette"></i> <span data-translate="projectFocus2Title">Project Focus: Netversant Designer</span>
+            </h6>
+            <span data-translate="projectFocus2Dates">(February 2025 – Present)</span>
+            <ul>
+              <li data-translate="expMid2Bullet1">Currently spearheading the frontend modernization of the Netversant
+                Designer application.
+              </li>
+              <li data-translate="expMid2Bullet2">Transforming the UI/UX using Native JavaScript, jQuery, and Bootstrap
+                to meet modern standards, while interfacing with the existing C# backend infrastructure.
+              </li>
+              <li data-translate="expMid2Bullet3">Developing new frontend features and refactoring components to enhance
+                usability and visual appeal.
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="role">
+          <h5 data-translate="juniorDevTitle">Junior Software Engineer</h5>
+          <span data-translate="juniorDevDates">(December 2021 – September 2023)</span>
+          <ul>
+            <li data-translate="expJunBullet1">Primarily worked on the development and maintenance of the GeoTask
+              project, contributing to both backend (Java/Spring) and frontend (AngularJS) components.
+            </li>
+            <li data-translate="expJunBullet2">Developed proof-of-concept applications and demonstrations showcasing new
+              capabilities of Google Maps APIs, specifically ODRD and Places API, often related to GeoTask
+              functionalities.
+            </li>
+            <li data-translate="expJunBullet3">Actively participated in the Agile development lifecycle, including
+              sprint planning, task estimation, and code reviews within the team.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="education" class="animate-on-scroll">
+      <h3 data-translate="educationTitle"><i class="fas fa-user-graduate"></i> Education</h3>
+      <div class="education-grid">
+        <div class="institution">
+          <h4 data-translate="edu1Inst">Polish-Japanese Academy of Information Technology</h4>
+          <p data-translate="edu1Loc">Warsaw, Poland</p>
+          <p><em data-translate="edu1Degree">Computer Science, Engineer (Inżynier)</em> - <span
+            data-translate="edu1Spec">Specialization: Databases</span></p>
+          <span data-translate="edu1Dates">October 2019 – March 2023</span>
+        </div>
+        <div class="institution">
+          <h4 data-translate="edu2Inst">KNEU College of Information Systems and Technologies</h4>
+          <p data-translate="edu2Loc">Kyiv, Ukraine</p>
+          <p><em data-translate="edu2Degree">Information Technologies, Junior Specialist</em> - <span
+            data-translate="edu2Spec">Specialization: Software Engineering</span></p>
+          <span data-translate="edu2Dates">September 2015 – June 2019</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="languages" class="animate-on-scroll">
+      <h3 data-translate="languagesTitle"><i class="fas fa-globe"></i> Languages</h3>
+      <p>
+        <span class="lang-item"><i class="fas fa-comment-dots"></i><span
+          data-translate="langUkr">Ukrainian:</span> <strong data-translate="levelNat">Native</strong></span>
+        <span class="lang-item"><i class="fas fa-comment-dots"></i><span
+          data-translate="langPol">Polish:</span> <strong>C1</strong></span>
+        <span class="lang-item"><i class="fas fa-comment-dots"></i><span
+          data-translate="langEng">English:</span> <strong>B2</strong></span>
+      </p>
+    </section>
+
+    <section id="contact" class="animate-on-scroll">
+      <h3 data-translate="contactTitle"><i class="fas fa-paper-plane"></i> Contact Me</h3>
+      <form id="contact-form" action="https://formspree.io/f/meoaydbv" method="POST">
+        <p data-translate="contactIntro">Feel free to reach out via email or use the form below.</p>
+        <div class="form-group">
+          <label for="name" data-translate="formNameLabel">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email" data-translate="formEmailLabel">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message" data-translate="formMessageLabel">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" data-translate="formSubmitButton"><i class="fas fa-paper-plane"></i> Send Message</button>
+      </form>
+      <p style="font-size: 0.8em; margin-top: 15px;" data-translate="formNote">Note: This form uses Formspree. You will
+        need to confirm your email address on first submission.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; <span id="current-year"></span> Dmytro Proniakin</p>
+  </footer>
+</div>
+
+<script>
+  const translations = {
+    // --- English ---
+    en: {
+      pageTitle: 'Dmytro Proniakin - Software Engineer',
+      name: 'Dmytro Proniakin',
+      jobTitle: 'Java/Angular Software Engineer | Warsaw, Poland',
+      email: 'dmytro.proniakin@gmail.com',
+      summaryTitle: 'Summary',
+      summaryText: 'Java/Angular Software Engineer with 3.5 years of experience specializing in building and enhancing web applications using Java, Spring Boot, and Angular (v15+, AngularJS). Proven ability to successfully migrate complex legacy systems to modern technology stacks and deliver high-quality features. Possesses full-stack capabilities, including experience with C# and various JavaScript frameworks (jQuery, Native JS, Bootstrap), demonstrating versatility in meeting diverse project requirements. Passionate about frontend development with Angular and backend development with Java.',
+      skillsTitle: 'Skills',
+      skillsBackend: 'Backend',
+      skillsFrontend: 'Frontend',
+      skillsDatabases: 'Databases',
+      skillsDevOps: 'DevOps & Tools',
+      skillsProjectMgmt: 'Project Management & Collaboration',
+      skillsAPIs: 'APIs & Other',
+      experienceTitle: 'Experience',
+      companyName: 'Globema sp. z o.o. | Warsaw, Poland',
+      companyDates: 'December 2021 – Present',
+      middleDevTitle: 'Middle Software Engineer',
+      middleDevDates: '(September 2023 – Present)',
+      projectFocus1Title: 'Project Focus: GeoTask & System Migration',
+      projectFocus1Dates: '(September 2023 – February 2025)',
+      expMid1Bullet1: 'Continued development and maintenance on the GeoTask project as a Middle Engineer, delivering features and bug fixes using Java/Spring and Angular (v15+).',
+      expMid1Bullet2: 'Successfully led (or played a key role in) the migration of core components for client systems from legacy AngularJS and Java 8 to modern Angular 15 and Java 17, enhancing performance (incl. lazy loading) and component rendering consistency.',
+      projectFocus2Title: 'Project Focus: Netversant Designer',
+      projectFocus2Dates: '(February 2025 – Present)',
+      expMid2Bullet1: 'Currently spearheading the frontend modernization of the Netversant Designer application.',
+      expMid2Bullet2: 'Transforming the UI/UX using Native JavaScript, jQuery, and Bootstrap to meet modern standards, while interfacing with the existing C# backend infrastructure.',
+      expMid2Bullet3: 'Developing new frontend features and refactoring components to enhance usability and visual appeal.',
+      juniorDevTitle: 'Junior Software Engineer',
+      juniorDevDates: '(December 2021 – September 2023)',
+      expJunBullet1: 'Primarily worked on the development and maintenance of the GeoTask project, contributing to both backend (Java/Spring) and frontend (AngularJS) components.',
+      expJunBullet2: 'Developed proof-of-concept applications and demonstrations showcasing new capabilities of Google Maps APIs, specifically ODRD and Places API, often related to GeoTask functionalities.',
+      expJunBullet3: 'Actively participated in the Agile development lifecycle, including sprint planning, task estimation, and code reviews within the team.',
+      educationTitle: 'Education',
+      edu1Inst: 'Polish-Japanese Academy of Information Technology',
+      edu1Loc: 'Warsaw, Poland',
+      edu1Degree: 'Computer Science, Engineer (Inżynier)',
+      edu1Spec: 'Specialization: Databases',
+      edu1Dates: 'October 2019 – March 2023',
+      edu2Inst: 'KNEU College of Information Systems and Technologies',
+      edu2Loc: 'Kyiv, Ukraine',
+      edu2Degree: 'Information Technologies, Junior Specialist',
+      edu2Spec: 'Specialization: Software Engineering',
+      edu2Dates: 'September 2015 – June 2019',
+      languagesTitle: 'Languages',
+      langUkr: 'Ukrainian:',
+      langPol: 'Polish:',
+      langEng: 'English:',
+      levelNat: 'Native',
+      levelC1: 'C1',
+      levelB2: 'B2',
+      contactTitle: 'Contact Me',
+      contactIntro: 'Feel free to reach out via email or use the form below.',
+      formNameLabel: 'Name',
+      formEmailLabel: 'Email',
+      formMessageLabel: 'Message',
+      formSubmitButton: 'Send Message',
+      formNote: 'Note: This form uses Formspree. You might need to confirm your email address on first submission.',
+      downloadCVButton: 'Download CV (PDF)', // Новий ключ
+    },
+    // --- Polish ---
+    pl: {
+      pageTitle: 'Dmytro Proniakin - Inżynier Oprogramowania',
+      name: 'Dmytro Proniakin',
+      jobTitle: 'Inżynier Oprogramowania Java/Angular | Warszawa, Polska',
+      email: 'dmytro.proniakin@gmail.com',
+      summaryTitle: 'Podsumowanie',
+      summaryText: 'Inżynier oprogramowania Java/Angular z 3,5-letnim doświadczeniem, specjalizujący się w tworzeniu i ulepszaniu aplikacji webowych przy użyciu Java, Spring Boot i Angular (v15+, AngularJS). Udokumentowana zdolność do pomyślnej migracji złożonych systemów legacy na nowoczesne stosy technologiczne oraz dostarczania wysokiej jakości funkcjonalności. Posiada umiejętności full-stack, w tym doświadczenie z C# i różnymi frameworkami JavaScript (jQuery, Native JS, Bootstrap), wykazując wszechstronność w spełnianiu różnorodnych wymagań projektowych. Pasjonat rozwoju frontend z Angular oraz backend z Java.',
+      skillsTitle: 'Umiejętności',
+      skillsBackend: 'Backend',
+      skillsFrontend: 'Frontend',
+      skillsDatabases: 'Bazy Danych',
+      skillsDevOps: 'DevOps i Narzędzia',
+      skillsProjectMgmt: 'Zarządzanie Projektami i Współpraca',
+      skillsAPIs: 'API i Inne',
+      experienceTitle: 'Doświadczenie',
+      companyName: 'Globema sp. z o.o. | Warszawa, Polska',
+      companyDates: 'Grudzień 2021 – Obecnie',
+      middleDevTitle: 'Middle Software Engineer',
+      middleDevDates: '(Wrzesień 2023 – Obecnie)',
+      projectFocus1Title: 'Fokus Projektowy: GeoTask i Migracja Systemu',
+      projectFocus1Dates: '(Wrzesień 2023 – Luty 2025)',
+      expMid1Bullet1: 'Kontynuacja rozwoju i utrzymania projektu GeoTask na stanowisku Middle Inżyniera, dostarczanie funkcji i poprawek błędów przy użyciu Java/Spring i Angular (v15+).',
+      expMid1Bullet2: 'Pomyślnie prowadził (lub odgrywał kluczową rolę w) migrację głównych komponentów systemów klienckich z legacy AngularJS i Java 8 na nowoczesne Angular 15 i Java 17, poprawiając wydajność (w tym lazy loading) i spójność renderowania komponentów.',
+      projectFocus2Title: 'Fokus Projektowy: Netversant Designer',
+      projectFocus2Dates: '(Luty 2025 – Obecnie)',
+      expMid2Bullet1: 'Obecnie kieruje modernizacją frontendową aplikacji Netversant Designer.',
+      expMid2Bullet2: 'Transformacja UI/UX przy użyciu Native JavaScript, jQuery i Bootstrap w celu spełnienia nowoczesnych standardów, przy współpracy z istniejącą infrastrukturą backendową C#.',
+      expMid2Bullet3: 'Rozwój nowych funkcji frontendowych i refaktoryzacja komponentów w celu poprawy użyteczności i atrakcyjności wizualnej.',
+      juniorDevTitle: 'Junior Software Engineer',
+      juniorDevDates: '(Grudzień 2021 – Wrzesień 2023)',
+      expJunBullet1: 'Głównie pracował nad rozwojem i utrzymaniem projektu GeoTask, przyczyniając się zarówno do komponentów backendowych (Java/Spring), jak i frontendowych (AngularJS).',
+      expJunBullet2: 'Rozwijał aplikacje typu proof-of-concept i demonstracje prezentujące nowe możliwości Google Maps API, w szczególności ODRD i Places API, często powiązane z funkcjonalnością GeoTask.',
+      expJunBullet3: 'Aktywnie uczestniczył w cyklu rozwoju Agile, w tym w planowaniu sprintów, szacowaniu zadań i przeglądach kodu w zespole.',
+      educationTitle: 'Edukacja',
+      edu1Inst: 'Polsko-Japońska Akademia Technik Komputerowych',
+      edu1Loc: 'Warszawa, Polska',
+      edu1Degree: 'Informatyka, Inżynier',
+      edu1Spec: 'Specjalizacja: Bazy Danych',
+      edu1Dates: 'Październik 2019 – Marzec 2023',
+      edu2Inst: 'Kolegium Systemów Informacyjnych i Technologii KNEU',
+      edu2Loc: 'Kijów, Ukraina',
+      edu2Degree: 'Technologie Informacyjne, Młodszy Specjalista',
+      edu2Spec: 'Specjalizacja: Inżynieria Oprogramowania',
+      edu2Dates: 'Wrzesień 2015 – Czerwiec 2019',
+      languagesTitle: 'Języki',
+      langUkr: 'Ukraiński:',
+      langPol: 'Polski:',
+      langEng: 'Angielski:',
+      levelNat: 'Ojczysty',
+      levelC1: 'C1',
+      levelB2: 'B2',
+      contactTitle: 'Kontakt',
+      contactIntro: 'Skontaktuj się ze mną przez email lub użyj poniższego formularza.',
+      formNameLabel: 'Imię',
+      formEmailLabel: 'Email',
+      formMessageLabel: 'Wiadomość',
+      formSubmitButton: 'Wyślij Wiadomość',
+      formNote: 'Uwaga: Ten formularz używa Formspree. Przy pierwszym wysłaniu może być konieczne potwierdzenie adresu email.',
+      downloadCVButton: 'Pobierz CV (PDF)', // Новий ключ
+    },
+    // --- Ukrainian ---
+    uk: {
+      pageTitle: 'Дмитро Пронякін - Інженер Програмного Забезпечення',
+      name: 'Дмитро Пронякін',
+      jobTitle: 'Java/Angular Інженер Програмного Забезпечення | Варшава, Польща',
+      email: 'dmytro.proniakin@gmail.com',
+      summaryTitle: 'Резюме',
+      summaryText: 'Java/Angular Інженер Програмного Забезпечення з 3.5 роками досвіду, що спеціалізується на створенні та покращенні веб-додатків з використанням Java, Spring Boot та Angular (v15+, AngularJS). Доведена здатність успішно мігрувати складні застарілі системи на сучасні стеки технологій та створювати високоякісні функції. Володіє навичками full-stack, включаючи досвід роботи з C# та різними JavaScript фреймворками (jQuery, Native JS, Bootstrap), демонструючи універсальність у вирішенні різноманітних проектних завдань. Захоплюється розробкою frontend на Angular та backend на Java.',
+      skillsTitle: 'Навички',
+      skillsBackend: 'Backend',
+      skillsFrontend: 'Frontend',
+      skillsDatabases: 'Бази Даних',
+      skillsDevOps: 'DevOps та Інструменти',
+      skillsProjectMgmt: 'Управління Проектами та Співпраця',
+      skillsAPIs: 'API та Інше',
+      experienceTitle: 'Досвід',
+      companyName: 'Globema sp. z o.o. | Варшава, Польща',
+      companyDates: 'Грудень 2021 – Дотепер',
+      middleDevTitle: 'Middle Software Engineer',
+      middleDevDates: '(Вересень 2023 – Дотепер)',
+      projectFocus1Title: 'Фокус Проекту: GeoTask та Міграція Системи',
+      projectFocus1Dates: '(Вересень 2023 – Лютий 2025)',
+      expMid1Bullet1: 'Продовжив розробку та підтримку проекту GeoTask на позиції Middle інженера, відповідаючи за реалізацію нових функцій та виправлення помилок з використанням Java/Spring та Angular (v15+).',
+      expMid1Bullet2: 'Успішно керував (або брав ключову участь у) міграцією основних компонентів клієнтських систем з застарілих AngularJS та Java 8 на сучасні Angular 15 та Java 17, що призвело до покращення продуктивності (включаючи lazy loading) та консистентності рендерингу компонентів.',
+      projectFocus2Title: 'Фокус Проекту: Netversant Designer',
+      projectFocus2Dates: '(Лютий 2025 – Дотепер)',
+      expMid2Bullet1: 'На даний момент повністю сфокусований на модернізації frontend частини додатку Netversant Designer.',
+      expMid2Bullet2: 'Трансформую UI/UX з використанням Native JavaScript, jQuery та Bootstrap для відповідності сучасним стандартам, взаємодіючи з існуючою C# backend інфраструктурою.',
+      expMid2Bullet3: 'Розробляю нові frontend фічі та проводжу рефакторинг компонентів для покращення юзабіліті та візуальної привабливості.',
+      juniorDevTitle: 'Junior Software Engineer',
+      juniorDevDates: '(Грудень 2021 – Вересень 2023)',
+      expJunBullet1: 'Переважно працював над розробкою та підтримкою проекту GeoTask, роблячи внесок як у backend (Java/Spring), так і у frontend (AngularJS) компоненти.',
+      expJunBullet2: 'Розробляв proof-of-concept додатки та демонстрації, що показували нові можливості Google Maps APIs, зокрема ODRD та Places API, часто пов\'язані з функціоналом GeoTask.',
+      expJunBullet3: 'Брав активну участь у Agile розробці, включаючи планування спринтів, оцінку завдань та код-рев\'ю в команді.',
+      educationTitle: 'Освіта',
+      edu1Inst: 'Польсько-Японська Академія Комп\'ютерних Технологій',
+      edu1Loc: 'Варшава, Польща',
+      edu1Degree: 'Комп\'ютерні науки, Інженер',
+      edu1Spec: 'Спеціалізація: Бази Даних',
+      edu1Dates: 'Жовтень 2019 – Березень 2023',
+      edu2Inst: 'Фаховий коледж інформаційних систем і технологій КНЕУ',
+      edu2Loc: 'Київ, Україна',
+      edu2Degree: 'Інформаційні технології, Молодший спеціаліст',
+      edu2Spec: 'Спеціалізація: Розробка програмного забезпечення',
+      edu2Dates: 'Вересень 2015 – Червень 2019',
+      languagesTitle: 'Мови',
+      langUkr: 'Українська:',
+      langPol: 'Польська:',
+      langEng: 'Англійська:',
+      levelNat: 'Рідна',
+      levelC1: 'C1',
+      levelB2: 'B2',
+      contactTitle: 'Зв\'язок зі мною',
+      contactIntro: 'Зв\'яжіться зі мною через email або скористайтеся формою нижче.',
+      formNameLabel: 'Ім\'я',
+      formEmailLabel: 'Email',
+      formMessageLabel: 'Повідомлення',
+      formSubmitButton: 'Надіслати Повідомлення',
+      formNote: 'Примітка: Ця форма використовує Formspree. Можливо, вам доведеться підтвердити свою адресу електронної пошти під час першого надсилання.',
+      downloadCVButton: 'Завантажити CV (PDF)',
+    },
+  };
+
+  // --- Theme Switching Logic ---
+  const themeToggleButton = document.getElementById('theme-toggle');
+  const currentTheme = localStorage.getItem('theme') || 'light';
+
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark-mode');
+    } else {
+      document.documentElement.classList.remove('dark-mode');
+    }
+  }
+
+  themeToggleButton.addEventListener('click', () => {
+    let newTheme = document.documentElement.classList.contains('dark-mode') ? 'light' : 'dark';
+    applyTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+  });
+
+  applyTheme(currentTheme);
+
+  // --- Language Switching Logic ---
+  function setLanguage(lang) {
+    if (!translations[lang]) {
+      console.warn(`Language ${lang} not found`);
+      return;
+    }
+    document.querySelectorAll('[data-translate]').forEach(el => {
+      const key = el.getAttribute('data-translate');
+      el.textContent = translations[lang][key] || translations['en'][key] || `[${key}]`;
+    });
+    // Update page title
+    const pageTitleKey = 'pageTitle'; // Use the key directly
+    if (translations[lang][pageTitleKey]) {
+      document.title = translations[lang][pageTitleKey];
+    } else if (translations['en'][pageTitleKey]) {
+      document.title = translations['en'][pageTitleKey];
+    }
+
+    document.documentElement.lang = lang;
+    localStorage.setItem('preferredLanguage', lang);
+    document.querySelectorAll('.lang-switcher button').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+    // Re-apply focus to the clicked button for accessibility
+    document.querySelector(`.lang-switcher button[data-lang="${lang}"]`).focus();
+  }
+
+  document.querySelectorAll('.lang-switcher button').forEach(button => {
+    button.addEventListener('click', (e) => {
+      setLanguage(e.target.getAttribute('data-lang'));
+    });
+  });
+
+  // --- Other Scripts ---
+  document.getElementById('current-year').textContent = new Date().getFullYear();
+
+  const sections = document.querySelectorAll('.animate-on-scroll');
+  const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // observer.unobserve(entry.target); // Optional: stop observing
+      }
+    });
+  }, observerOptions);
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+
+  // --- Initial Language Load ---
+  const preferredLanguage = localStorage.getItem('preferredLanguage') || 'en';
+  setLanguage(preferredLanguage);
+
+</script>
+</body>
+</html>
